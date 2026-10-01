@@ -1,41 +1,54 @@
-# Nalston Strategic Group LLC — Premium Site
+# NALSTON — Corporate website
 
-This is a static corporate website prepared for `nalstongroup.com`.
+Static HTML, CSS and JavaScript for Nalston Strategic Group LLC. No build step, framework, external font requests, analytics, tracking cookies or backend. Images are local responsive WebP files.
 
-## Pages
-- `index.html`
-- `company.html`
-- `capabilities.html`
-- `contact.html`
-- `privacy.html`
-- `terms.html`
+## Preview
 
-## Brand
-Visible brand: **NALSTON**  
-Legal entity: **Nalston Strategic Group LLC**
+Run `python -m http.server 8080` from this folder and visit http://localhost:8080. Opening index.html directly also works, except clipboard access may require localhost or HTTPS.
 
-The site intentionally does not publish the EIN and does not claim customers, revenue, certifications, years of operating history, offices or volumes that have not been established.
+## Publish the existing GitHub Pages site
 
-## GitHub Pages
-1. Create a repository such as `nalston-site`.
-2. Upload every file and folder from this package.
-3. Commit to `main`.
-4. Go to **Settings → Pages**.
-5. Choose **Deploy from a branch** → `main` → `/ (root)`.
-6. Add custom domain `nalstongroup.com`.
-7. Enable HTTPS after GitHub verifies the domain.
+Repository: https://github.com/familiamigrandousa/nalston-website
 
-## DNS at Northwest
-Do **not** alter MX, SPF, DKIM or DMARC records used for email.
+The files are ready to commit to the existing repository. Preserve the current Pages deployment configuration. This project is served from the repository root and supports the /nalston-website/ subpath through relative asset and navigation URLs. No DNS changes are included.
 
-When connecting GitHub Pages, use the current GitHub Pages DNS values shown in GitHub's documentation at the time you configure the domain. Do not replace email-related DNS records.
+```sh
+git add .
+git commit -m "Redesign Nalston corporate website"
+git push
+```
 
-## Phone
-When your Tello number is ready, add it to:
-- `contact.html`
-- footer in all pages
+Current canonical URL, Open Graph URLs, JSON-LD, robots.txt, sitemap.xml and the 404 base URL use https://familiamigrandousa.github.io/nalston-website/ while the custom domain remains unconnected.
 
-Search the files for `nicolas@nalstongroup.com` to find the relevant contact areas.
+## When connecting nalstongroup.com
 
-## Editing copy
-All public-facing claims are deliberately conservative. Keep it that way until the business has verifiable customers, suppliers, facilities, certifications or operating metrics to feature.
+After configuring the custom domain in GitHub Pages and verifying HTTPS, update all public URL metadata in one step:
+
+```sh
+python tools/set_site_url.py https://nalstongroup.com/
+```
+
+Then commit the updated files. GitHub's domain configuration manages CNAME; no CNAME file is added preemptively. Do not alter email-related MX, SPF, DKIM or DMARC records. The script only changes metadata and absolute site URLs, not the email address.
+
+## Pages and maintenance
+
+- index.html: hero, company, capabilities, markets, working approach, suppliers and partners, final CTA and contact.
+- company.html, capabilities.html, contact.html: complete supporting pages.
+- privacy.html, terms.html: website-specific policies.
+- 404.html: branded recovery page. The absolute base URL intentionally points to the published site so nested missing routes can load assets and navigate home.
+- styles.css / script.js: shared styles, accessible mobile navigation and optional email composer.
+- assets/CREDITS.md: photography sources and licenses.
+
+Shared headers and footers are static HTML. Keep them consistent when editing a page. The site content is in English for business counterparties. Do not introduce unverified customers, certifications, offices, sales figures or operating history. Market focus is not an office-location claim. Photography is illustrative.
+
+## Contact behavior
+
+The site cannot send messages itself. The form validates required fields, prepares a mailto draft, and offers Copy inquiry as a fallback. The user must send the email. No contact data is posted, stored or logged by the site. Without JavaScript, direct email links remain available and the optional form is hidden.
+
+## Verification
+
+See QA.md for the completed browser checks and any deployment-specific limitations. Review company policies as business practices evolve.
+
+## Guia de lanzamiento en espanol
+
+Consulta [PUBLICAR.md](PUBLICAR.md) para los comandos de publicacion y la conexion de nalstongroup.com.

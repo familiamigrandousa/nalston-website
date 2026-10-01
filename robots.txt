@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nalstongroup.com/sitemap.xml
+Sitemap: https://familiamigrandousa.github.io/nalston-website/sitemap.xml
